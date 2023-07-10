@@ -8,6 +8,6 @@
       - catalogue
       - user
       - shipping
-      - payment 
+      - payment
   roles:
     - jenkins-jobs
