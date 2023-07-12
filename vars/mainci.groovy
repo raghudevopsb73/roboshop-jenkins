@@ -10,6 +10,7 @@ def call() {
 
       stage('Unit tests') {
           echo 'unit tests'
+        sh 'ls -ltr'
       }
 
       stage('Code Analysis') {
@@ -26,6 +27,6 @@ def call() {
           echo 'Publish a Artifact'
         }
       }
-    
+
     }
 }
