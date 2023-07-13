@@ -2,6 +2,9 @@ def call() {
   node('workstation') {
 
     stage('Code Checkout') {
+
+      sh 'find . | grep "^./" |xargs rm -rf'
+
       if(env.TAG_NAME ==~ ".*") {
         env.gitbrname = "refs/tags/${env.TAG_NAME}"
       } else {
@@ -37,6 +40,8 @@ def call() {
         if (env.cibuild == "nginx") {
           sh 'zip -r ${component}-${TAG_NAME}.zip *'
         }
+
+        sh 'curl -v -u admin:admin123 --upload-file ${component}-${TAG_NAME}.zip http://172.31.95.9:8081/repository/${component}/${component}-${TAG_NAME}.zip'
       }
     }
 
