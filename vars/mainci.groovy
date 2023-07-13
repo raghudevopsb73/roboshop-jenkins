@@ -7,7 +7,6 @@ def call() {
       } else {
         env.gitbrname = "${env.BRANCH_NAME}"
       }
-      'refs/tags/v1'
       checkout scm: [$class: 'GitSCM', userRemoteConfigs: [[url: 'https://github.com/raghudevopsb73/frontend']], branches: [[name: gitbrname]]], poll: false
 
 
