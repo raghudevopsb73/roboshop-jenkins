@@ -7,22 +7,7 @@ def call() {
       } else {
         env.gitbrname = "${env.BRANCH_NAME}"
       }
-      checkout scm: [$class: 'GitSCM', userRemoteConfigs: [[url: 'https://github.com/raghudevopsb73/frontend']], branches: [[name: gitbrname]]], poll: false
-
-
-//        sh 'env'
-//        sh 'find . | grep "^./" |xargs rm -rf'
-//        if(env.TAG_NAME ==~ ".*") {
-//          git(
-//              url: 'https://github.com/raghudevopsb73/frontend',
-//              branch: 'v1',
-//              changelog: false,
-//              poll: false
-//          )
-//        } else {
-//          //git branch: env.BRANCH_NAME , url: 'https://github.com/raghudevopsb73/frontend'
-//          echo 'hello'
-//        }
+      checkout scm: [$class: 'GitSCM', userRemoteConfigs: [[url: "https://github.com/raghudevopsb73/${env.component}"]], branches: [[name: gitbrname]]], poll: false
 
     }
 
