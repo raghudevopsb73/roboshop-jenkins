@@ -2,6 +2,7 @@ def call() {
   node('workstation') {
 
       stage('Code Checkout') {
+        sh 'env'
         sh 'find . | grep "^./" |xargs rm -rf'
         git branch: 'main', url: 'https://github.com/raghudevopsb73/frontend'
       }
