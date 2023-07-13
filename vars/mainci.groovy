@@ -2,7 +2,13 @@ def call() {
   node('workstation') {
 
     stage('Code Checkout') {
-      checkout scm: [$class: 'GitSCM', userRemoteConfigs: [[url: 'https://github.com/raghudevopsb73/frontend']], branches: [[name: 'refs/tags/v1']]], poll: false
+      if(env.TAG_NAME ==~ ".*") {
+        env.gitbrname = "refs/tags/${env.TAG_NAME}"
+      } else {
+        env.gitbrname = "${env.BRANCH_NAME}"
+      }
+      'refs/tags/v1'
+      checkout scm: [$class: 'GitSCM', userRemoteConfigs: [[url: 'https://github.com/raghudevopsb73/frontend']], branches: [[name: gitbrname]]], poll: false
 
 
 //        sh 'env'
