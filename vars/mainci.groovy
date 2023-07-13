@@ -2,12 +2,8 @@ def call() {
   node('workstation') {
 
     stage('Code Checkout') {
-      git(
-          url: 'https://github.com/raghudevopsb73/frontend',
-          branch: 'ref/tags/v1',
-          changelog: false,
-          poll: false
-      )
+      checkout scm: [$class: 'GitSCM', userRemoteConfigs: [[url: 'https://github.com/raghudevopsb73/frontend']], branches: [[name: 'refs/tags/v1']]], poll: false
+
 
 //        sh 'env'
 //        sh 'find . | grep "^./" |xargs rm -rf'
