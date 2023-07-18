@@ -46,7 +46,7 @@ def call() {
       stage('Publish a Artifact') {
         if (env.cibuild == "java") {
             sh 'mv target/${component}-1.0.jar ${component}.jar'
-            sh 'rm -f pom.xml src target'
+            sh 'rm -rf pom.xml src target'
           }
         sh 'rm -f Jenkinsfile'
         sh 'echo ${TAG_NAME} >VERSION'
