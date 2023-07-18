@@ -48,7 +48,6 @@ def call() {
             sh 'mv target/${component}-1.0.jar ${component}.jar'
             sh 'rm -f pom.xml src target'
           }
-        }
         sh 'rm -f Jenkinsfile'
         sh 'echo ${TAG_NAME} >VERSION'
         sh 'zip -r ${component}-${TAG_NAME}.zip *'
