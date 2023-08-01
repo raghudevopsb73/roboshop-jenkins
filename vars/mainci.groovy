@@ -42,6 +42,10 @@ def call() {
       echo 'Security Scans'
     }
 
+    stage('Docker Build') {
+      sh 'docker build -t ${component} .'
+    }
+
     if(env.TAG_NAME ==~ ".*") {
       stage('Publish a Artifact') {
         if (env.cibuild == "java") {
